@@ -53,7 +53,7 @@ class Character:
 #9 12 gold crowns
 #0 broadsword
 
-#player functions
+#PLAYER 
 
     def statChange(self, value: int, statName: str):
         # Modify the specified stat
@@ -95,12 +95,13 @@ class Equipment:
         character.endurance = min(character.endurance + effect, character.maxEndurance)
         return f"You use the {self.name}. Added {effect} Endurance. Your endurance is now {character.endurance}."
     
+####SKILLS####
 
-@dataclass
+
 ##goal here is to have to print a list of skills.  Player should be able to either choose the skill or have an 'info' option to display the skill text.  Player can only choose 5 skills.
 
 ##should probably have a help menu for player to reference
-
+@dataclass
 class Skills:
     skills = {
        'Camouflage':'This Discipline enables a Kai Lord to blend in with his surroundings. In the countryside, he can hide undetected among trees and rocks and pass close to an enemy without being seen. In a town or city, it enables him to look and sound like a native of that area, and can help him to find shelter or a safe hiding place.',
