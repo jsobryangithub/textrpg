@@ -11,17 +11,6 @@
 #gui / tkinter?
 #create images to go along with encounters, etc
 
-##GAMEPLAY / MECHANICS DECISIONS
-#do an actual Lone Wolf clone (stick to original game texts, mechanics etc)
-#make the encounters and decisions simpler (i.e. player is given a fixed number of skills.  Encounters will consist of the player attempting to use those skills on NPCs / enemies with the results dependent on the skill used)
-#simple approach will be better if going for a more humorous tone.  It can be silly without being overly vulgar or gross
-
-#GENERAL IDEAS / NOTES
-#if it's going to be an original story, write the story and decision trees first, then worry about the encounter logic
-
-
-
-
 import random
 from dataclasses import dataclass
 
