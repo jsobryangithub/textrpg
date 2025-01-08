@@ -8,6 +8,7 @@
 
 ####LONG TERM GOALS####
 #make it a web-based app
+#gui / tkinter?
 #create images to go along with encounters, etc
 
 ##GAMEPLAY / MECHANICS DECISIONS
@@ -36,10 +37,11 @@ class Character:
     endurance: int = 0
     maxEndurance: int = 0
     combatSkill: int = 0
-    gold: int = 0
-    equipment = []
+    gold: int = 0 #max 50
+    equipment = []  #max 8.  Meals count as equipment.  Player starts with 1 meal
     items = []
-    skills = []
+    weapons = [] #max 2.  Player starts with axe 
+    skills = [] #max 5
 
     def __post_init__(self):
         enduranceStat = random.randint(0,10) + 20
@@ -48,13 +50,19 @@ class Character:
         self.combatSkill = random.randint(0,10) + 10
         self.gold = random.randint(0,10)
 
-#skill choices
-
-
-#starting equipment
-#axe, meal, goldcrowns
 
 #random choice of items
+#player will start with an additional item chosen at random from the following using randNum
+#1 sword
+#2 helmet - adds 2 endurance
+#3 two meals
+#4 chainmail waistcoat - adds 4 endurance
+#5 mace
+#6 healing potion - restores 4 endurance when used.  
+#7 quarterstaff
+#8 spear
+#9 12 gold crowns
+#0 broadsword
 
 #player functions
 
@@ -67,20 +75,6 @@ class Character:
         else:
             raise ValueError(f"Invalid stat name: {statName}")
         
-
-
-
-###How Much Can You Carry?
-# Weapons
-# The maximum number of weapons that you may carry is two.
-# Backpack Items
-# These must be stored in your Backpack. Because space is limited, you may only keep a maximum of eight articles, including Meals, in your Backpack at any one time.
-# Special Items
-# Special Items are not carried in the Backpack. When you discover a Special Item, you will be told how to carry it.
-# Gold Crowns
-# These are always carried in the Belt Pouch. It will hold a maximum of fifty crowns.
-# Food
-# Food is carried in your Backpack. Each Meal counts as one item.
 @dataclass
 class Equipment:
     name: str
@@ -114,10 +108,15 @@ class Equipment:
     
 
 @dataclass
-class Skills:
-    skillName = str
-    skillDefinition = str
+##goal here is to have to print a list of skills.  Player should be able to either choose the skill or have an 'info' option to display the skill text.  Player can only choose 5 skills.
 
+class Skills:
+    skills = {
+       'camouflage':'This Discipline enables a Kai Lord to blend in with his surroundings. In the countryside, he can hide undetected among trees and rocks and pass close to an enemy without being seen. In a town or city, it enables him to look and sound like a native of that area, and can help him to find shelter or a safe hiding place.',
+       'Hunting':'This skill ensures that a Kai Lord will never starve in the wild. He will always be able to hunt for food for himself except in areas of wasteland and desert. The skill also enables a Kai Lord to be able to move stealthily when stalking his prey',
+    }
+
+    @staticmethod
     def addSkill(self, character: Character, skillName) -> str:
         character.skills.append(skillName)
         
