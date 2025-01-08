@@ -22,7 +22,7 @@ randNum = random.randint(0,10)
 class Character:
 
 ###player stats
-#refer to notion for post_init definition
+
     endurance: int = 0
     maxEndurance: int = 0
     combatSkill: int = 0
