@@ -12,7 +12,7 @@
 #create images to go along with encounters, etc
 
 import random
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 
 #random number generator
 randNum = random.randint(0,10)
@@ -103,7 +103,7 @@ class Equipment:
 ##should probably have a help menu for player to reference
 @dataclass
 class Skills:
-    skills = {
+    availableSkills: dict = field(default_factory=lambda : {
        'Camouflage':'This Discipline enables a Kai Lord to blend in with his surroundings. In the countryside, he can hide undetected among trees and rocks and pass close to an enemy without being seen. In a town or city, it enables him to look and sound like a native of that area, and can help him to find shelter or a safe hiding place.',
        'Hunting':'This skill ensures that a Kai Lord will never starve in the wild. He will always be able to hunt for food for himself except in areas of wasteland and desert. The skill also enables a Kai Lord to be able to move stealthily when stalking his prey',
        'Sixth Sense':'This skill may warn a Kai Lord of imminent danger. It may also reveal the true purpose of a stranger or strange object encountered in your adventure.',
@@ -115,7 +115,7 @@ class Skills:
        'Animal Kinship':'This skill enables a Kai Lord to communicate with some animals and to be able to guess the intentions of others.',
        'Mind Over Matter':'Mastery of this Discipline enables a Kai Lord to move small objects with his powers of concentration.'
 
-    }
+    })
 
     #SPECIAL SKILL NOTES
     #'Healing' skill adds +1 END up to max for each non-combat section
@@ -143,7 +143,14 @@ class Skills:
     
     @staticmethod
     def addSkill(self, character: Character, skillName) -> str:
-        character.skills.append(skillName)
+        if len(Character.skills) < 5:
+            Character.skills.append(skillName)
+            Skills.remove(skillName)
+            print(f"Added {skillName}")
+        else:
+            print(f"You have reached the maximum number of skills")
+
+            
     
 
         
